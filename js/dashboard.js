@@ -1,4 +1,4 @@
-Cesium.Ion.defaultAccessToken = "YOUR_TOKEN"
+Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjNDExMmYxZC1kYWQzLTQ3OWQtYWVmZS00YWM5MWE1NjZlZWUiLCJpZCI6Mzk5MjQzLCJpYXQiOjE3NzI4MDI0MzN9.9jnH_6RJ8BWVcGMhvvbH4JKnPoRZNTEPCM9Opr77mdg"
 
 const viewer = new Cesium.Viewer('globe')
 
