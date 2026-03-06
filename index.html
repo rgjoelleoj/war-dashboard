@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
-<meta charset="UTF-8">
 <title>Global Conflict Monitor</title>
 
 <script src="https://cesium.com/downloads/cesiumjs/releases/1.113/Build/Cesium/Cesium.js"></script>
+
 <link href="https://cesium.com/downloads/cesiumjs/releases/1.113/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 
 body{
 margin:0;
-overflow:hidden;
 font-family:Arial;
+background:black;
+color:white;
 }
 
-#cesiumContainer{
-width:100%;
+#globe{
 height:100vh;
 }
 
 .panel{
 position:absolute;
-top:10px;
-left:10px;
+top:20px;
+left:20px;
 background:rgba(0,0,0,0.7);
-color:white;
 padding:15px;
-border-radius:6px;
+border-radius:5px;
 }
 
 </style>
@@ -38,67 +39,19 @@ border-radius:6px;
 
 <body>
 
-<div id="cesiumContainer"></div>
+<div id="globe"></div>
 
 <div class="panel">
-<h3>Conflict Dashboard</h3>
 
-Iran Casualties: <span id="iran">1230</span><br>
-US Casualties: <span id="us">6</span><br>
-Missiles Fired: <span id="missiles">700</span>
+<h3>War Statistics</h3>
+
+Iran casualties: <span id="iran"></span><br>
+US casualties: <span id="us"></span><br>
+Missiles fired: <span id="missiles"></span>
 
 </div>
 
-<script>
-
-Cesium.Ion.defaultAccessToken = 
-"YOUR_CESIUM_TOKEN"
-
-const viewer = new Cesium.Viewer('cesiumContainer', {
-timeline:false,
-animation:false
-})
-
-viewer.camera.flyTo({
-destination: Cesium.Cartesian3.fromDegrees(53,26,3000000)
-})
-
-// Tehran marker
-
-viewer.entities.add({
-position: Cesium.Cartesian3.fromDegrees(51.3890,35.6892),
-point:{pixelSize:10,color:Cesium.Color.RED},
-label:{text:"Tehran"}
-})
-
-// Gulf base
-
-viewer.entities.add({
-position: Cesium.Cartesian3.fromDegrees(55.2708,25.2048),
-point:{pixelSize:10,color:Cesium.Color.BLUE},
-label:{text:"US Base"}
-})
-
-// missile animation
-
-function missile(){
-
-const start = Cesium.Cartesian3.fromDegrees(51.3890,35.6892)
-const end = Cesium.Cartesian3.fromDegrees(55.2708,25.2048)
-
-viewer.entities.add({
-polyline:{
-positions:[start,end],
-width:3,
-material:Cesium.Color.RED
-}
-})
-
-}
-
-setInterval(missile,4000)
-
-</script>
+<script src="js/dashboard.js"></script>
 
 </body>
 
