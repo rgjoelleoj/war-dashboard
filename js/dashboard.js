@@ -1,7 +1,7 @@
 async function loadData(){
 
 const res = await fetch(
-"https://YOUR-WORKER.workers.dev/api/war"
+"war-data-api.rgjoelleoj.workers.dev"
 )
 
 const data = await res.json()
